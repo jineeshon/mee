@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<style>
+.container{
+	float:left;
+}
+</style>
+</head>
+<body>
+<form id="MyForm" atdelegate="d26" style="float:left;background-color:#ccc;">
+	<div style="background-color:tan;float:left;margin:10px;padding:10px;">
+		<div class="container box  selected" id="w10_box1">
+			<span>My first span</span>			
+		</div>
+		<div class="container box " id="w10_box2">
+			<span>My second span</span>			
+		</div>
+	</div> 
+</form>
+<script>
+// Generic function to get target event
+function getEventTarget(evt) {
+  evt = evt || window.event;
+  return evt.target || evt.srcElement;
+}
+//Toggle background color
+function toggleBgColor(evt){
+	var targetElem = getEventTarget(evt);
+	if(targetElem.tagName.toLowerCase() === 'input') {
+		targetElem.style.margin = targetElem.style.margin?"":"10px";
+	}else{
+		console.log("Failed!!");
+	}
+}
+
+var table = document.getElementById("MyForm");
+if( table.attachEvent ){
+	table.attachEvent("onfocusin",  toggleBgColor);
+}else{
+	table.addEventListener("focusin", toggleBgColor, true);
+	table.addEventListener("focus", toggleBgColor, true);
+}
+
+
+</script>
+</body>
+</html>

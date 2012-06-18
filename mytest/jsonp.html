@@ -1,0 +1,21 @@
+<html>
+<head>
+<script type="text/javascript"> 
+	function foo(data) {
+		document.getElementById('bb').innerHTML= "PostBox: " + data.postalcodes[0].adminName2 + ", Code: " + data.postalcodes[0].adminCode1;
+	} 
+	function kk(){
+		console.log( history[0] );
+	}
+</script> 
+</head> 
+<body> 
+<div id="aa"></div>
+<div id="bb"></div>
+
+<script type="text/javascript" src="jsonp.js">
+</script> 
+<input type="button" onclick="kk();" value="JJJJJJJJ" />
+</body>
+
+</html>

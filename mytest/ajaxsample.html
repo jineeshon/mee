@@ -1,0 +1,36 @@
+<html>
+<head>
+<script type="text/javascript">
+function loadXMLDoc(){
+	var xmlhttp;
+	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}else{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function(){
+		console.log( "After server calls" );
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){			 
+			eval( parseRequest( xmlhttp.responseText) );			
+			//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+		console.log( "After server calls 2" );
+	}
+	//var url = "me.js";
+	var url = "http://search.twitter.com/search.json?q=ariatemplates&rpp=20";
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+}
+function parseRequest(response){
+	JJ = response;
+}
+</script>
+</head>
+<body>
+
+<div id="myDiv"><h2>Let AJAX change this text</h2></div>
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+
+</body>
+</html>
+
